@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Untuk Kamu, Cintaku</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+
+        body {
+            background: linear-gradient(to bottom right, #ffdee9, #b5fffc);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+        .box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 20px auto;
+            font-size: 22px;
+            min-height: 120px;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 20px 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        h2 {
+            font-size: 36px;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Untuk Kamu, Cintaku</h1>
+
+    <div class="box" id="noteBox">
+        Klik tombol di bawah untuk membaca ungkapan manis!
+    </div>
+    <button onclick="showNote()">Ungkapan Imut</button>
+
+    <h2>Puisi untukmu</h2>
+
+    <div class="box" id="poemBox">
+        Klik tombol di bawah untuk membaca puisiku!
+    </div>
+    <button onclick="showPoem()">Puisi Baru</button>
+
+    <!-- Musik Latar -->
+    <audio autoplay loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_11ba3e246d.mp3?filename=love-110624.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const notes = [
+            "Kamu itu kayak kopi pagiku, bikin aku semangat sepanjang hari.",
+            "Dari semua senyum di dunia, senyummu yang paling aku cari.",
+            "Kalau aku disuruh pilih antara kamu atau oksigen... aku bakal bilang, 'Bisa nggak dua-duanya? Soalnya kamu napasku juga.'",
+            "Aku nggak butuh peta... soalnya hatiku udah nemu rumahnya di kamu.",
+            "Kalau peluk kamu itu hobi, aku mau dijadiin atlet nasional.",
+            "Setiap ketik 'kamu' di HP, aku refleks senyum sendiri kayak orang gila.",
+            "Aku mau jadi alasan kenapa kamu lupa sama semua sedihmu.",
+            "Bahkan WiFi terbaik pun kalah cepat sama koneksi hatiku ke kamu."
+        ];
+
+        const poems = [
+            "Dalam senyummu kutemukan surga,\nDalam tatapanmu ada damai jiwa,\n\nSetiap langkahku ingin bersamamu,\nSetiap detikku ingin untukmu.\n\nJika dunia bertanya apa mimpiku,\nAku akan menjawab, 'Hanya kamu.'\n\nKamu bukan hanya bagian dari hariku,\nKamu adalah alasanku untuk bermimpi lebih jauh.",
+            "Aku mencintaimu tanpa kata,\nSeperti angin yang tak terlihat,\nTapi terasa di kulit dan jiwa.\n\nKamu adalah puisiku,\nYang kubaca berulang-ulang,\nTanpa pernah bosan.",
+            "Di setiap detik,\nNamamu berdetak dalam hatiku.\n\nDi setiap malam,\nRinduku melayang untukmu.\n\nKamu dan aku,\nAdalah takdir yang kutunggu.",
+            "Bersamamu,\nWaktu terasa diam.\n\nTanpamu,\nSegalanya terasa hampa.\n\nKamu,\nAdalah alasan aku tersenyum hari ini."
+        ];
+
+        function typeWriter(elementId, text, i = 0) {
+            if (i < text.length) {
+                document.getElementById(elementId).innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+                setTimeout(function() { typeWriter(elementId, text, i + 1); }, 50);
+            }
+        }
+
+        function showNote() {
+            const randomIndex = Math.floor(Math.random() * notes.length);
+            const text = notes[randomIndex];
+            document.getElementById('noteBox').innerHTML = '';
+            typeWriter('noteBox', text);
+        }
+
+        function showPoem() {
+            const randomIndex = Math.floor(Math.random() * poems.length);
+            const text = poems[randomIndex];
+            document.getElementById('poemBox').innerHTML = '';
+            typeWriter('poemBox', text);
+        }
+    </script>
+
+</body>
+</html>
